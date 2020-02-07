@@ -2,13 +2,23 @@
 
 namespace Controllers{
 
-    require '../../vendor/autoload.php';
+    require '../../vendor/autoload.php';    
+    
+    use \Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+    use \Symfony\Component\Routing\Annotation\Route;
 
-
-    class CargoController {
+    class CargoController
+    {
+        /**
+        * @Route("/cargo")
+        */
         public function index(){
             $cargoView = new \Views\CargoView();
-            $resultado = $cargoView->index();
+            
+            $cargoModel = new \Models\Cargo();
+            $cargos = $cargoModel->findAll();    
+
+            $resultado = $cargoView->index($cargos);
             return $resultado;
         }
     }
