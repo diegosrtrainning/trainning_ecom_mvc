@@ -3,8 +3,7 @@
 namespace Controllers{
 
     require '../../vendor/autoload.php';    
-    
-    use \Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+        
     use \Symfony\Component\Routing\Annotation\Route;
 
     class CargoController
@@ -14,7 +13,7 @@ namespace Controllers{
         */
         public function index(){
             $cargoView = new \Views\CargoView();
-            
+
             $cargoModel = new \Models\Cargo();
             $cargos = $cargoModel->findAll();    
 
